@@ -1,0 +1,20 @@
+server:
+  port: 8090
+  jwt:
+    jwtSecretKey: 9EjDKJ8WQDABF0otRFUhD/wr0gBm+tjk/0k9ovYj7PZIAGGBM7SX3rs1klAL8ztNR
+    algorithm: HS256
+    issuer: issuer
+    expiresIn: 15m
+
+spring:
+  application:
+    name: assignment-sales-service
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/test?authSource=admin
+
+de:
+  flapdoodle:
+    mongodb:
+      embedded:
+        version: 6.0.2

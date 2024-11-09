@@ -1,0 +1,14 @@
+server:
+  port: ${SERVER_PORT}
+  jwt:
+    jwtSecretKey: ${JWT_SECRET}
+    algorithm: HS256
+    issuer: ${JWT_ISSUER}
+    expiresIn: ${JWT_EXPIRATION}
+
+spring:
+  application:
+    name: assignment-sales-service
+  data:
+    mongodb:
+      uri: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}/${MONGO_DATABASE}?authSource=admin
