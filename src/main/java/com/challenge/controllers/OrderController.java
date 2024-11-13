@@ -14,6 +14,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.Sort;
 
 import java.util.Optional;
 
@@ -54,7 +55,7 @@ public class OrderController {
                     @ApiResponse(responseCode = "403", description = "User not permission to view orders"),
             }
     )
-    public Page<Order> getAll(@PageableDefault(size = 50) Pageable pageable) {
+    public Page<Order> getAll(@PageableDefault(size = 50, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
         return orderService.getAllOrders(pageable);
     }
 
@@ -73,7 +74,7 @@ public class OrderController {
     )
     public void save(@RequestHeader("Idempotency-Key") String idempotencyKey,
                      @RequestBody Order order) {
-        orderService.saveOrder(idempotencyKey, order);
+        orderService.sendOrder(idempotencyKey, order);
     }
 
     @DeleteMapping
